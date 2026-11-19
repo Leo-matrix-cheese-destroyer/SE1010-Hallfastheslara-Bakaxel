@@ -1,7 +1,6 @@
 run snittstorheter_lastfall_a.m
 
 
-
 % Först definiera maximal böjmoment och vridmoment vid
 % dimensionsövergången.
 %-------------------------------------------------------------------%
@@ -16,11 +15,11 @@ Mv_max = F_D*dh/4;
 %och skjuvspänning för att få den egentliga påfrestningen vid
 %dimensionsövergången.
 %--------------------------------------------------------------------%
-sigma_max = @(D) K_tb * 32*sqrt(My_max^2+Mz_max^2)/(pi*(0.6*D)^3); %Maximal dragspänning vid dimensionsövergången
-d_sigma_max = @(D) -3 * K_tb *32*sqrt(My_max^2 + Mz_max^2) / (pi * 0.6^3 * D^4); %Derivata m.a.p D
+sigma_max = @(D) K_tb_a * 32*sqrt(My_max^2+Mz_max^2)/(pi*(0.6*D)^3); %Maximal dragspänning vid dimensionsövergången
+d_sigma_max = @(D) -3 * K_tb_a *32*sqrt(My_max^2 + Mz_max^2) / (pi * 0.6^3 * D^4); %Derivata m.a.p D
 
-tau_max = @(D) K_tv * 16*Mv_max/(pi*(0.6*D)^3); %Maximal skjuvspänning vid dimensionsövergången
-d_tau_max = @(D) -3 * K_tv * 16*Mv_max/(pi*0.6^3*D^4);
+tau_max = @(D) K_tT_a * 16*Mv_max/(pi*(0.6*D)^3); %Maximal skjuvspänning vid dimensionsövergången
+d_tau_max = @(D) -3 * K_tT_a * 16*Mv_max/(pi*0.6^3*D^4);
 
 %Effektivspänningen kombinerar drag och skjuvspänning till en total
 %amplitudspänning.
@@ -41,7 +40,7 @@ Diameter
 %Nu ska Diametern dimensioneras med avseende på utmattningen också. Den
 %största diametern väljs.
 %-----------------------------------------------------------------------%
-sigma_ok_utm = sigma_u/(K_f*nu); %Enligt formel 25.2 och 25.3. Tillåten effektivspänning för materialet.
+sigma_ok_utm = sigma_u/(K_f_a*nu); %Enligt formel 25.2 och 25.3. Tillåten effektivspänning för materialet.
 
 sigma_utm = @(D) 32*sqrt(My_max^2 + Mz_max^2) / (pi * (0.6*D)^3); %Tar bara hänsyn till böjspänningar, ingen effektivspänning
 d_sigma_utm = @(D) -3 * 32*sqrt(My_max^2 + Mz_max^2) / (pi * 0.6^3 * D^4); %Derivatan
