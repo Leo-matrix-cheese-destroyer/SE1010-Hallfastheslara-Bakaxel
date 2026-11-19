@@ -175,9 +175,9 @@ legend('\sigma_{eff,nom}', '\sigma_{eff}', '\sigma_{tillåten}');
 sigma_fatigue_allowed = sigma_u / nu;                       % Gräns för roterande böjmomentsspänning innan utmattning
 
 % Beräkna Anvisningsfaktorn Kf
-d = (K_f_b*32/(sigma_fatigue_allowed*pi)*bendingTotal(i_1+1))^(1/3);
-disp(d/0.6*1000)
-disp(d*1000)
+% d = (K_f_b*32/(sigma_fatigue_allowed*pi)*bendingTotal(i_1+1))^(1/3);
+% disp(d/0.6*1000)
+% disp(d*1000)
 
 % Nominell roterande böjspänning
 d_fat_nom = max((32/(sigma_fatigue_allowed*pi)*bendingTotal(1:i_2)).^(1/3));
